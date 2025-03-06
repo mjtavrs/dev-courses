@@ -3,6 +3,9 @@ package dev.marcostavares.dev_school.modules.course;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,7 +25,11 @@ public class CourseEntity {
     @NotBlank
     private String category;
     private boolean active;
+
+    @CreationTimestamp
     private LocalDate created_at;
+
+    @UpdateTimestamp
     private LocalDate updated_at;
 
 }
