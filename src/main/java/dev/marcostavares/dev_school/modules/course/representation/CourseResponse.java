@@ -1,4 +1,4 @@
-package dev.marcostavares.dev_school.modules.course.dto;
+package dev.marcostavares.dev_school.modules.course.representation;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CourseResponseDTO {
+public class CourseResponse {
 
     private String name;
     private String category;
