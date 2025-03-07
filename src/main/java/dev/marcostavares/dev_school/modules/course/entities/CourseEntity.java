@@ -1,4 +1,4 @@
-package dev.marcostavares.dev_school.modules.course;
+package dev.marcostavares.dev_school.modules.course.entities;
 
 import java.time.LocalDate;
 import java.util.UUID;
