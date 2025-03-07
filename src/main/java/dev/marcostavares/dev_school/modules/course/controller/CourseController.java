@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.marcostavares.dev_school.modules.course.entities.CourseEntity;
 import dev.marcostavares.dev_school.modules.course.services.CreateCourse;
+import dev.marcostavares.dev_school.modules.course.services.DeleteCourse;
 import dev.marcostavares.dev_school.modules.course.services.ListCourses;
 import dev.marcostavares.dev_school.modules.course.services.UpdateCourse;
 import jakarta.validation.Valid;
@@ -31,6 +33,9 @@ public class CourseController {
 
     @Autowired
     private UpdateCourse updateCourse;
+
+    @Autowired
+    private DeleteCourse deleteCourse;
 
     @PostMapping("/")
     public ResponseEntity<Object> createCourse(@Valid @RequestBody CourseEntity courseEntity) {
@@ -59,6 +64,12 @@ public class CourseController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCourse(@PathVariable UUID id) {
+        var course = this.deleteCourse.execute(id);
+        return ResponseEntity.ok().body(course);
     }
 
 }
