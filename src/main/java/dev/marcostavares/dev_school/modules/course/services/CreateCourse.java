@@ -13,7 +13,7 @@ public class CreateCourse {
     @Autowired
     private CourseRepository courseRepository;
 
-    public CourseEntity createCourse(CourseEntity courseEntity) {
+    public CourseEntity execute(CourseEntity courseEntity) {
         this.courseRepository
                 .getCourseByName(courseEntity.getName())
                 .ifPresent(course -> {
