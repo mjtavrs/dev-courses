@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.marcostavares.dev_school.modules.course.entities.CourseEntity;
+import dev.marcostavares.dev_school.modules.course.enums.CourseStatusEnum;
 import dev.marcostavares.dev_school.modules.course.repository.CourseRepository;
 
 @Service
@@ -15,12 +16,12 @@ public class ToggleCourseStatus {
     private CourseRepository courseRepository;
 
     public String execute(UUID id, CourseEntity courseEntity) {
-        this.courseRepository.findById(id).map(course -> {
-            course.setActive(courseEntity.isActive());
-            return courseRepository.save(course);
-        });
-
-        return "Course status toggled";
+        return courseRepository.findById(id).map(course -> {
+            course.setActive(course.getActive() == CourseStatusEnum.ACTIVE ? CourseStatusEnum.INACTIVE
+                    : CourseStatusEnum.ACTIVE);
+            courseRepository.save(course);
+            return "Course status toggled";
+        }).orElse("Course not found");
     }
 
 }
