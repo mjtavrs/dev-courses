@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.marcostavares.dev_school.modules.course.entities.CourseEntity;
+import dev.marcostavares.dev_school.modules.course.representation.CourseResponse;
 import dev.marcostavares.dev_school.modules.course.services.CreateCourse;
 import dev.marcostavares.dev_school.modules.course.services.DeleteCourse;
 import dev.marcostavares.dev_school.modules.course.services.ListCourses;
@@ -53,7 +54,7 @@ public class CourseController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<CourseEntity>> getAllCourses() {
+    public ResponseEntity<List<CourseResponse>> getAllCourses() {
         var courses = this.listCourses.execute();
         if (courses.isEmpty()) {
             return ResponseEntity.noContent().build();
