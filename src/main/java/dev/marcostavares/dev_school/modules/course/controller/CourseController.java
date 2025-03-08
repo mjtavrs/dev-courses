@@ -78,8 +78,8 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}/active")
-    public ResponseEntity<String> toggleCourseStatus(@PathVariable UUID id, CourseEntity courseEntity) {
-        var course = this.toggleCourseStatus.execute(id, courseEntity);
+    public ResponseEntity<String> toggleCourseStatus(@PathVariable UUID id) {
+        var course = this.toggleCourseStatus.execute(id);
         return ResponseEntity.ok().body(course);
     }
 
