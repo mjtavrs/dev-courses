@@ -20,7 +20,7 @@ public class DeleteCourse {
         }
 
         courseRepository.deleteById(id);
-        return "Course successfully deleted";
+        return "Course successfully deleted.";
     }
 
 }

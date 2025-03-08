@@ -62,13 +62,10 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateCourse(@PathVariable UUID id, @Valid @RequestBody CourseEntity courseEntity) {
-        try {
-            var course = this.updateCourse.execute(id, courseEntity);
-            return ResponseEntity.ok().body(course);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<CourseEntity> updateCourse(@PathVariable UUID id,
+            @Valid @RequestBody CourseEntity courseEntity) {
+        CourseEntity updatedCourse = updateCourse.execute(id, courseEntity);
+        return ResponseEntity.ok(updatedCourse);
     }
 
     @DeleteMapping("/{id}")
