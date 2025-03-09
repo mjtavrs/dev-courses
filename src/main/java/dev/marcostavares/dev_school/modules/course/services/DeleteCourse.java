@@ -14,13 +14,12 @@ public class DeleteCourse {
     @Autowired
     private CourseRepository courseRepository;
 
-    public String execute(UUID id) {
+    public void execute(UUID id) {
         if (!courseRepository.existsById(id)) {
             throw new CourseNotFoundException();
         }
 
         courseRepository.deleteById(id);
-        return "Course successfully deleted.";
     }
 
 }

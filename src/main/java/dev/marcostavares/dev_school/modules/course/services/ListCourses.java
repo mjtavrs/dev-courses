@@ -16,7 +16,10 @@ public class ListCourses {
     private CourseRepository courseRepository;
 
     public List<CourseResponse> execute() {
-        return courseRepository.findAll().stream().map(CourseResponse::fromEntity).collect(Collectors.toList());
+        return courseRepository.findAll()
+                .stream()
+                .map(CourseResponse::fromEntity)
+                .collect(Collectors.toList());
     }
 
 }

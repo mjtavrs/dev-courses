@@ -70,9 +70,9 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCourse(@PathVariable UUID id) {
-        var course = this.deleteCourse.execute(id);
-        return ResponseEntity.ok().body(course);
+    public ResponseEntity<Void> deleteCourse(@PathVariable UUID id) {
+        deleteCourse.execute(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PatchMapping("/{id}/active")
