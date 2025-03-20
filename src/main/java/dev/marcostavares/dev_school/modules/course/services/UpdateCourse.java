@@ -16,6 +16,7 @@ public class UpdateCourse {
     @Autowired
     private CourseRepository courseRepository;
 
+    // Maybe use @Transactional in the future?
     public CourseResponse execute(UUID id, CourseEntity courseEntity) {
         return courseRepository.findById(id).map(course -> {
             course.setName(courseEntity.getName());
