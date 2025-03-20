@@ -56,9 +56,6 @@ public class CourseController {
     @GetMapping("/")
     public ResponseEntity<List<CourseResponse>> getAllCourses() {
         var courses = listCourses.execute();
-        if (courses.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
         return ResponseEntity.ok().body(courses);
     }
 
