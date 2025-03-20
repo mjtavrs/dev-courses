@@ -17,7 +17,7 @@ public class CreateCourse {
         this.courseRepository
                 .findByName(courseEntity.getName())
                 .ifPresent(course -> {
-                    throw new CourseFoundException();
+                    throw new CourseFoundException(courseEntity.getName());
                 });
 
         return this.courseRepository.save(courseEntity);
